@@ -18,10 +18,10 @@ public class CustomerDAOImp implements CustomerDAO{
 	SessionFactory factory;
 	
 	@Override
-	public Customer create(Customer newCustomer) {
+	public Customer create(Customer entity) {
 		Session session = factory.getCurrentSession();
-		session.save(newCustomer);
-		return newCustomer;
+		session.save(entity);
+		return entity;
 	}
 	@Override
 	public Customer deleteById(String id) {
@@ -49,10 +49,10 @@ public class CustomerDAOImp implements CustomerDAO{
 		return findEntity;
 	}
 	@Override
-	public void update(Customer upentity) {
+	public void update(Customer entity) {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
-		session.update(upentity);
+		session.update(entity);
 
 		
 	}

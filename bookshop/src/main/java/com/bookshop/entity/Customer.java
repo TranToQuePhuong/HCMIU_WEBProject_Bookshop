@@ -13,7 +13,7 @@ public class Customer {
 	@Id
 	String id; 
 	String password;
-	String fullname;
+	String fullName;
 	String email;
 	String photo;
 	Boolean activated;
@@ -38,12 +38,12 @@ public class Customer {
 		this.password = password;
 	}
 
-	public String getFullname() {
-		return fullname;
+	public String getfullName() {
+		return fullName;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setfullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {

@@ -7,8 +7,8 @@ import com.bookshop.entity.Category;
 public interface CategoryDAO {
 	Category findById(int id);
 	List<Category> findAll();
-	Category create(Category newcategory);
-	void update(Category upentity);
+	Category create(Category entity);
+	void update(Category entity);
 	Category deleteById(int id);
 	
 }

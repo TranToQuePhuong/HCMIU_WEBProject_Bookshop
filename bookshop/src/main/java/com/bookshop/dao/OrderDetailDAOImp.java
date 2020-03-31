@@ -18,10 +18,10 @@ public class OrderDetailDAOImp implements OrderDetailDAO{
 	SessionFactory factory;
 	
 	@Override
-	public OrderDetail create(OrderDetail newOrderDetail) {
+	public OrderDetail create(OrderDetail entity) {
 		Session session = factory.getCurrentSession();
-		session.save(newOrderDetail);
-		return newOrderDetail;
+		session.save(entity);
+		return entity;
 	}
 	@Override
 	public OrderDetail deleteById(int id) {
@@ -49,10 +49,10 @@ public class OrderDetailDAOImp implements OrderDetailDAO{
 		return findEntity;
 	}
 	@Override
-	public void update(OrderDetail upentity) {
+	public void update(OrderDetail entity) {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
-		session.update(upentity);
+		session.update(entity);
 
 		
 	}

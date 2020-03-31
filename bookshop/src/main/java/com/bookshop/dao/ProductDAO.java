@@ -7,8 +7,8 @@ import com.bookshop.entity.Product;
 public interface ProductDAO {
 	Product findById(int id);
 	List<Product> findAll();
-	Product create(Product newProduct);
-	void update(Product upentity);
+	Product create(Product entity);
+	void update(Product entity);
 	Product deleteById(int id);
 	
 }

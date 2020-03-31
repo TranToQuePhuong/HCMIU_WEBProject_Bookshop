@@ -7,8 +7,8 @@ import com.bookshop.entity.Customer;
 public interface CustomerDAO {
 	Customer findById(String id);
 	List<Customer> findAll();
-	Customer create(Customer newCustomer);
-	void update(Customer upentity);
+	Customer create(Customer entity);
+	void update(Customer entity);
 	Customer deleteById(String id);
 	
 }

@@ -18,10 +18,10 @@ public class OrderDAOImp implements OrderDAO{
 	SessionFactory factory;
 	
 	@Override
-	public Order create(Order newOrder) {
+	public Order create(Order entity) {
 		Session session = factory.getCurrentSession();
-		session.save(newOrder);
-		return newOrder;
+		session.save(entity);
+		return entity;
 	}
 	@Override
 	public Order deleteById(int id) {
@@ -49,10 +49,10 @@ public class OrderDAOImp implements OrderDAO{
 		return findEntity;
 	}
 	@Override
-	public void update(Order upentity) {
+	public void update(Order entity) {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
-		session.update(upentity);
+		session.update(entity);
 
 		
 	}

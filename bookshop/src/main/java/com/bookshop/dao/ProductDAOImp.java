@@ -18,10 +18,10 @@ public class ProductDAOImp implements ProductDAO{
 	SessionFactory factory;
 	
 	@Override
-	public Product create(Product newProduct) {
+	public Product create(Product entity) {
 		Session session = factory.getCurrentSession();
-		session.save(newProduct);
-		return newProduct;
+		session.save(entity);
+		return entity;
 	}
 	@Override
 	public Product deleteById(int id) {
@@ -49,10 +49,10 @@ public class ProductDAOImp implements ProductDAO{
 		return findEntity;
 	}
 	@Override
-	public void update(Product upentity) {
+	public void update(Product entity) {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
-		session.update(upentity);
+		session.update(entity);
 
 		
 	}

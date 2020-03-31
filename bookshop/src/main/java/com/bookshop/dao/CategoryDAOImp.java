@@ -18,10 +18,10 @@ public class CategoryDAOImp implements CategoryDAO{
 	SessionFactory factory;
 	
 	@Override
-	public Category create(Category newcategory) {
+	public Category create(Category entity) {
 		Session session = factory.getCurrentSession();
-		session.save(newcategory);
-		return newcategory;
+		session.save(entity);
+		return entity;
 	}
 	@Override
 	public Category deleteById(int id) {
@@ -49,10 +49,10 @@ public class CategoryDAOImp implements CategoryDAO{
 		return findEntity;
 	}
 	@Override
-	public void update(Category upentity) {
+	public void update(Category entity) {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
-		session.update(upentity);
+		session.update(entity);
 
 		
 	}
