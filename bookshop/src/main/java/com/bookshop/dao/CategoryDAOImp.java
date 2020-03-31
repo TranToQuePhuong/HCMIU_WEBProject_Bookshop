@@ -1,0 +1,59 @@
+package com.bookshop.dao;
+
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.bookshop.entity.Category;
+
+@Transactional
+public class CategoryDAOImp implements CategoryDAO{
+	
+	@Autowired
+	SessionFactory factory;
+	
+	@Override
+	public Category create(Category newcategory) {
+		Session session = factory.getCurrentSession();
+		session.save(newcategory);
+		return newcategory;
+	}
+	@Override
+	public Category deleteById(int id) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		Category findEntity = findById(id);
+		session.delete(findEntity);
+		return findEntity;
+	}
+	@Override
+	public List<Category> findAll() {
+		// TODO Auto-generated method stub
+		String hql = "FROM Category";
+		Session session = factory.getCurrentSession();
+		// contact to category table in database
+		TypedQuery<Category> query = session.createQuery(hql, Category.class);
+		List<Category> list = query.getResultList();
+		return list;
+	}
+	@Override
+	public Category findById(int id) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		Category findEntity = session.find(Category.class, id);
+		return findEntity;
+	}
+	@Override
+	public void update(Category upentity) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		session.update(upentity);
+
+		
+	}
+}
