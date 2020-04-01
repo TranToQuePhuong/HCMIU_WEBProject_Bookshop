@@ -3,13 +3,14 @@ GO
 USE BookshopOnline;
 
 CREATE TABLE Categories( 
-id INT,
+id INT Identity(1,1) ,
 Name NVARCHAR(50),
 NameVN NVARCHAR(MAX),
+PRIMARY KEY(id)
 );
 
 CREATE TABLE Products(
-id INT,
+id INT Identity(1000,1),
 Name nvarchar(60),
 UnitPrice float,
 Image nvarchar(50),
@@ -21,6 +22,7 @@ Description nvarchar(MAX),
 Discount float,
 ViewCount int,
 Special bit
+PRIMARY KEY(id)
 );
 
 CREATE TABLE Customers(
@@ -31,22 +33,33 @@ Email nvarchar(50),
 Photo nvarchar(50),
 Activated bit,
 Admin bit
+PRIMARY KEY(id)
 );
 
 CREATE TABLE Orders(
-Id int,
+id int Identity(10,10),
 CustomerId nvarchar(20),
 OrderDate datetime,
 Address nvarchar(60),
 Amount float,
 Description nvarchar(1000)
+PRIMARY KEY(id)
 );
 
 CREATE TABLE OrderDetails(
-id int,
+id int Identity(00001,1),
 OrderId int,
 ProductId int,
 UnitPrice int,
 Quantity int,
 Discount float
+PRIMARY KEY(id)
 );
+
+DROP TABLE Categories;
+DROP TABLE Customers;
+DROP TABLE OrderDetails;
+DROP TABLE Orders;
+DROP TABLE Products;
+
+SELECT * FROM Categories;
