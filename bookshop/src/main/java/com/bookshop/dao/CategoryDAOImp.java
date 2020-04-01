@@ -8,21 +8,24 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.bookshop.entity.Category;
 
 @Transactional
-public class CategoryDAOImp implements CategoryDAO{
-	
+@Repository
+public class CategoryDAOImp implements CategoryDAO {
+
 	@Autowired
 	SessionFactory factory;
-	
+
 	@Override
 	public Category create(Category entity) {
 		Session session = factory.getCurrentSession();
 		session.save(entity);
 		return entity;
 	}
+
 	@Override
 	public Category deleteById(int id) {
 		// TODO Auto-generated method stub
@@ -31,6 +34,7 @@ public class CategoryDAOImp implements CategoryDAO{
 		session.delete(findEntity);
 		return findEntity;
 	}
+
 	@Override
 	public List<Category> findAll() {
 		// TODO Auto-generated method stub
@@ -41,6 +45,7 @@ public class CategoryDAOImp implements CategoryDAO{
 		List<Category> list = query.getResultList();
 		return list;
 	}
+
 	@Override
 	public Category findById(int id) {
 		// TODO Auto-generated method stub
@@ -48,12 +53,12 @@ public class CategoryDAOImp implements CategoryDAO{
 		Category findEntity = session.find(Category.class, id);
 		return findEntity;
 	}
+
 	@Override
 	public void update(Category entity) {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
 		session.update(entity);
 
-		
 	}
 }
