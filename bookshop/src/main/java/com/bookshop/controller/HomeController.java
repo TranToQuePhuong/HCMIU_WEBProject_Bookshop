@@ -10,7 +10,25 @@ public class HomeController {
 	public String index() {
 		return "home/index";
 	}
-	
-	
+
+	@RequestMapping("home/about")
+	public String about() {
+		return "home/about";
+	}
+
+	@RequestMapping("home/contact")
+	public String contact() {
+		return "home/contact";
+	}
+
+	@RequestMapping("home/feedback")
+	public String feedback() {
+		return "home/feedback";
+	}
+
+	@RequestMapping("home/faq")
+	public String faq() {
+		return "home/faq";
+	}
 
 }

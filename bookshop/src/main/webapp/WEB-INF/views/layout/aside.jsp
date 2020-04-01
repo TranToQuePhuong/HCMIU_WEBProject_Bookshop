@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <div class="panel panel-default">
   <div class="panel-heading">SHOPPING CART</div>
@@ -26,9 +27,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">SHOP BY CATEGORY</div>
   <div class="list-group">
-  	<a href="#" class="list-group-item">First item</a>
-  	<a href="#" class="list-group-item">Second item</a>
- 	<a href="#" class="list-group-item">Third item</a>
+  <c:forEach var="c" items="${cates}">
+  	<a href="#" class="list-group-item">${c.nameVN}</a>
+  </c:forEach>
   </div>
 </div>
 

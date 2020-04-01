@@ -2,16 +2,31 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="/home/index">Home</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="/home/about">About</a></li>
+      <li><a href="/home/contact">Contact</a></li>
+      <li><a href="/home/feedback">Feedback</a></li>
+      <li><a href="/home/faq">FAQ</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Forgot Password?</a></li>
+          <li><a href="#">Sign Out</a></li>
+          <li><a href="#">Change Password</a></li>
+          <li><a href="#">Update</a></li>
+          <li><a href="#">Order</a></li>
+        </ul>
+      </li>
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#">Vietnamese</a></li>
+      <li><a href="#">English</a></li>
     </ul>
+    
   </div>
 </nav>
