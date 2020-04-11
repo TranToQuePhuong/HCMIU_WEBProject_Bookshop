@@ -10,5 +10,8 @@ public interface ProductDAO {
 	Product create(Product entity);
 	void update(Product entity);
 	Product deleteById(int id);
+	List<Product> findByCategoryId(Integer categoryId);
+	List<Product> findByKeywords(String keywords);
 	
+
 }

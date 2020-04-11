@@ -17,7 +17,7 @@ public class Category {
 	String name;
 	String nameVN;
 			
-	@OneToMany(mappedBy="category", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="category")
 	List<Product> products;
 
 	public Integer getId() {

@@ -61,4 +61,28 @@ public class ProductDAOImp implements ProductDAO {
 		session.update(entity);
 
 	}
+
+	@Override
+	public List<Product> findByCategoryId(Integer categoryId) {
+		// TODO Auto-generated method stub
+		String hql = "FROM Product p WHERE p.category.id=:cid";
+		Session session = factory.getCurrentSession();
+		// contact to Product table in database
+		TypedQuery<Product> query = session.createQuery(hql, Product.class);
+		query.setParameter("cid", categoryId);
+		List<Product> list = query.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Product> findByKeywords(String keywords) {
+		String hql = "FROM Product p"
+				+ " WHERE p.name LIKE :kw OR p.category.name LIKE :kw OR p.category.nameVN LIKE :kw";
+		Session session = factory.getCurrentSession();
+		// contact to Product table in database
+		TypedQuery<Product> query = session.createQuery(hql, Product.class);
+		query.setParameter("kw", "%"+keywords+"%");
+		List<Product> list = query.getResultList();
+		return list;
+	}
 }

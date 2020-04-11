@@ -19,7 +19,7 @@ public class Customer {
 	Boolean activated;
 	Boolean admin;
 
-	@OneToMany(mappedBy="customer", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="customer")
 	List<Order> orders;
 
 	public String getId() {
