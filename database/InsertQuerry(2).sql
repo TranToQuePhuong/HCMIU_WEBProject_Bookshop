@@ -51,6 +51,7 @@ INSERT INTO Orders(CustomerId, OrderDate, Address, Amount, Description) VALUES(
 300000,
 NULL
 );
+
 INSERT INTO Orders(CustomerId, OrderDate, Address, Amount, Description) VALUES(
 'C2',
 '2020-03-03',
@@ -100,7 +101,7 @@ WHERE id = 1000;
 
 
 
-SELECT* FROM Categories;
+SELECT * FROM Categories;
 SELECT * FROM Products;
 SELECT * FROM Customers;
 SELECT * FROM Orders;
