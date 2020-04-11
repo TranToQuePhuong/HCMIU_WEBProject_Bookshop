@@ -32,7 +32,7 @@ public class Order {
 	@JoinColumn(name ="customerId")
 	Customer customer;
 	
-	@OneToMany(mappedBy="order", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="order")
 	List<OrderDetail> orderDetails;
 
 	public int getId() {

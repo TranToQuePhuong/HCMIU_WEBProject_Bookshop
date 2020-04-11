@@ -18,8 +18,8 @@
 <div class="panel panel-default">
   <div class="panel-heading">SEARCH</div>
   <div class="panel-body">
-  	<form action="/product/search" method="post">
-  		<input class="form-control" name="keywords" placeholder="Keywords" >
+  	<form action="/product/list-by-keywords" method="post">
+  		<input value="${param.keywords}"class="form-control" name="keywords" placeholder="Keywords" >
   	</form>
   </div>
 </div>
@@ -28,7 +28,7 @@
   <div class="panel-heading">SHOP BY CATEGORY</div>
   <div class="list-group">
   <c:forEach var="c" items="${cates}">
-  	<a href="#" class="list-group-item">${c.nameVN}</a>
+  	<a href="/product/list-by-category/${c.id}" class="list-group-item">${c.nameVN}</a>
   </c:forEach>
   </div>
 </div>

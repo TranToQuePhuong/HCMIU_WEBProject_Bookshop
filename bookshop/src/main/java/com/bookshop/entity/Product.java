@@ -39,7 +39,7 @@ public class Product {
 	@JoinColumn(name ="categoryId")
 	Category category;
 
-	@OneToMany(mappedBy="product", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="product")
 	List<OrderDetail> orderDetails;
 
 	public int getId() {
