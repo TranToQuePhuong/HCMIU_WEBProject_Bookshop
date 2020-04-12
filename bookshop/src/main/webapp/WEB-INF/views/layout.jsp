@@ -11,6 +11,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	<link href="/static/css/styles.css" rel="stylesheet"/>
 </head>
 <body>
 
