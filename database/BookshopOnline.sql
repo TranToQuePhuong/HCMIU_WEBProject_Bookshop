@@ -56,10 +56,4 @@ Discount float
 PRIMARY KEY(id)
 );
 
-DROP TABLE Categories;
-DROP TABLE Customers;
-DROP TABLE OrderDetails;
-DROP TABLE Orders;
-DROP TABLE Products;
 
-SELECT * FROM Categories;
