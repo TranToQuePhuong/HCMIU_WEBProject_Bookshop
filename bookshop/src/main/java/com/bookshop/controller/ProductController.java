@@ -2,20 +2,27 @@ package com.bookshop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bookshop.dao.ProductDAO;
 import com.bookshop.entity.Product;
+import com.bookshop.service.CookieService;
 
 @Controller
 public class ProductController {
 	@Autowired
 	ProductDAO pdao;
+	
+	@Autowired
+	CookieService cookie;
 
 	@RequestMapping("product/list-by-category/{cid}")
 	public String listByCategory(Model model, @PathVariable("cid") Integer categoryId) {
@@ -38,6 +45,23 @@ public class ProductController {
 		model.addAttribute("prod", prod);
 		model.addAttribute("list", list);
 		return "product/detail";
+	}
+	
+	@ResponseBody
+	@RequestMapping("product/add-to-favo/{id}")
+	public boolean addToFavorite(Model model, @PathVariable("id") Integer id) {
+		Cookie favo=cookie.read("favo");
+		String value= id.toString();
+		if(favo!=null) {
+			value= favo.getValue();
+			if(!value.contains(id.toString())) {
+				value += "," + id.toString();
+			}
+			else return false;
+		}
+		cookie.create("favo", value, 30);
+		
+		return true;
 	}
 
 }

@@ -7,13 +7,14 @@
       		<a href="/product/detail/${p.id}">
         		<img class="bookshop-prod" src="/static/products/${p.image}">
         	</a>   
-        	<div class="caption">   
+        	<div class="caption" >   
      			<p class="overflow-fix">${p.name}</p>
-        		<div class="pull-right">
+        		<div data-id="${p.id}" class="pull-right">
          			<button class="btn btn-sm btn-danger">
          				<i class="glyphicon glyphicon-shopping-cart"></i>
          			</button>
-         			<button class="btn btn-sm btn-warning">
+         			<button class="btn btn-sm btn-warning btn-star">
+         			<!-- btn-star la cua minh, dung jQuery de viet -->
          				<i class="glyphicon glyphicon-star"></i>
          			</button>
        			</div>  
