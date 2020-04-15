@@ -18,8 +18,8 @@
 <body>
 
 	<div class="container">
-		<header class="row">
-			<h1 class="alert alert-success">Bookshop</h1>
+		<header class="row custom">
+			<h1 class="alert alert-success backGround"></h1>
 		</header>
 		<nav class="row">
 			<tiles:insertAttribute name="menu"/>

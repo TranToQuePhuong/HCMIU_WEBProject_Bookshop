@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,8 +49,9 @@ public class ProductController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("product/add-to-favo/{id}")
-	public boolean addToFavorite(Model model, @PathVariable("id") Integer id) {
+	@RequestMapping(value = "product/add-to-favo/{id}", method = RequestMethod.GET)
+	//, produces = "application/json;charset=utf-8" --> Neu muon tra ve boolean
+	public String addToFavorite(Model model, @PathVariable("id") Integer id) {
 		Cookie favo=cookie.read("favo");
 		String value= id.toString();
 		if(favo!=null) {
@@ -57,11 +59,13 @@ public class ProductController {
 			if(!value.contains(id.toString())) {
 				value += "," + id.toString();
 			}
-			else return false;
+			else {
+				System.out.println("False");
+				return "0";
+			}
 		}
 		cookie.create("favo", value, 30);
-		
-		return true;
+		return "1";
 	}
 
 }

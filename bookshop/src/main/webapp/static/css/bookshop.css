@@ -1,27 +1,27 @@
-.bookshop-prod{
-	height: 150px!important;
+.bookshop-prod {
+	height: 150px !important;
 	max-width: 100%;
 }
 
-.overflow-fix{
+.overflow-fix {
 	white-space: nowrap;
-	max-width: 100%; 
-	overflow: hidden; 
+	max-width: 100%;
+	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.detail-img{
+.detail-img {
 	max-width: 100%;
 	max-height: 400px;
 }
 
-.detail-info li{
+.detail-info li {
 	font-variant: small-caps;
 	font-size: larger;
 	line-height: 28px;
 }
 
-.thumb-img{
+.thumb-img {
 	width: 60px;
 	height: 60px;
 	border-radius: 5px;
@@ -30,6 +30,17 @@
 	box-shadow: 0px 0px 2px blue;
 }
 
-.thumb-img:hover{
+.thumb-img:hover {
 	box-shadow: 0px 0px 4px red;
+}
+
+h1.alert.alert-success.backGround {
+	background-image:
+		url(https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.0-9/15135764_580762552134838_9050603035179630097_n.jpg?_nc_cat=104&_nc_sid=6e5ad9&_nc_ohc=L0VfEqa1FTEAX8h7w_F&_nc_ht=scontent.fsgn3-1.fna&oh=eac4716a5687a4d2539d9e0596b6ed46&oe=5EBC9D80);
+	background-size: cover;
+	height: 78px;
+}
+
+header.row.custom {
+    height: 95px;
 }
