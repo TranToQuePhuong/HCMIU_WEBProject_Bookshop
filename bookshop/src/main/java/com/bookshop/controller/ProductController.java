@@ -38,13 +38,52 @@ public class ProductController {
 		model.addAttribute("list", list);
 		return "product/list";
 	}
+	
+	@RequestMapping("product/list-by-special/{id}")
+	public String listBySpecial(Model model, @PathVariable("id") Integer id) {
+		List<Product> list = pdao.findBySpecial(id);
+		model.addAttribute("list", list);
+		return "product/list";
+	}
 
 	@RequestMapping("product/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id) {
 		Product prod = pdao.findById(id);
-		List<Product> list = pdao.findByCategoryId(prod.getCategory().getId());
 		model.addAttribute("prod", prod);
+		
+		// Increase viewed count
+		prod.setViewCount(prod.getViewCount() + 1);
+		pdao.update(prod);
+		
+		// Similar products
+		List<Product> list = pdao.findByCategoryId(prod.getCategory().getId());
 		model.addAttribute("list", list);
+		
+		
+		// Favorite products
+		Cookie favo = cookie.read("favo");
+		if(favo != null) {
+			String ids = favo.getValue();
+			List<Product> favo_list = pdao.findByIds(ids);
+			model.addAttribute("favo",favo_list);
+			
+			
+		}
+		
+		// Viewd products
+		Cookie viewed=cookie.read("viewed");
+		String value = id.toString();
+		if(viewed != null) {
+			value = viewed.getValue();
+			value += "," + id.toString();
+		}
+		// create cookie expired in 30 days
+		cookie.create("viewed", value, 30);
+		List<Product> viewed_list = pdao.findByIds(value);
+		model.addAttribute("viewed", viewed_list);
+			
+		
+		
 		return "product/detail";
 	}
 	

@@ -85,4 +85,42 @@ public class ProductDAOImp implements ProductDAO {
 		List<Product> list = query.getResultList();
 		return list;
 	}
+
+	@Override
+	public List<Product> findByIds(String ids) {
+		// TODO Auto-generated method stub
+		String hql = "FROM Product p WHERE p.id IN("+ids+")";
+		System.out.println(hql);
+		Session session = factory.getCurrentSession();
+		// contact to Product table in database
+		TypedQuery<Product> query = session.createQuery(hql, Product.class);
+		List<Product> list = query.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Product> findBySpecial(Integer id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM Product p";
+		TypedQuery<Product> query = session.createQuery(hql, Product.class);
+		switch(id) {
+		case 0: // new arrivals
+			hql = "FROM Product p ORDER BY p.productDate DESC";
+			break;
+		case 1: // best-selling
+			hql = "FROM Product p ORDER BY size(p.orderDetails) DESC";
+			break;
+		case 2: // Most Viewed
+			hql = "FROM Product p ORDER BY p.viewCount DESC";
+			break;	 
+		case 3: // Sale
+			hql = "FROM Product p ORDER BY p.discount DESC";
+			break;
+		}
+		query = session.createQuery(hql,Product.class);
+		query.setMaxResults(12); // SELECT TOP 12 DESCENDING 
+
+		List<Product> list = query.getResultList();
+		return list;
+	}
 }
