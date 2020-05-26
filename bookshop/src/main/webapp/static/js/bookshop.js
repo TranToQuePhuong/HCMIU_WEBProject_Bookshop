@@ -17,23 +17,34 @@ $(document).ready(function() {
 			success : function(response) {
 				$("#cart-cnt").html(response[0]);
 				$("#cart-amt").html([1]);
-			}
+			},
+			error:function (e) {
+				 alert("Failed: " + status.responseText);
+				 console.log(status.responseText)
+				//console.log(e)
+		     },
 		});
 		$(this).closest("tr").remove();
 	});
 	
 	$(".btn-add-to-cart").click(function() {
 		var id = $(this).closest("div").attr("data-id");
+		console.log(id)
 		$.ajax({
 			url : "/cart/add/" + id,
+			type: "get",
+			data:"",
+			contentType: "application/json; charset=utf-8",
 			success:function(response) {
-			//	$("#cart-cnt").html(response[0]);
-			//	$("#cart-amt").html(response[1]);
-				alert(response);
+				$("#cart-cnt").html(response[0]);
+				$("#cart-amt").html(response[1]);
+				alert("Da them vao gio hang");
+				console.log(response);
 			},
-			error:function (status) {
+			error:function (e) {
 				 alert("Failed: " + status.responseText);
 				 console.log(status.responseText)
+				//console.log(e)
 		     },
 	
 			

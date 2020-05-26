@@ -8,7 +8,7 @@
   	<img id="cart-img" src="/static/shoppingcart.jpg" class="col-sm-5">
   	<ul class="col-sm-7">
   		<li><b id="cart-cnt">${cart.count}</b> items </li>
-  		<li><b id="cart-amt">${cart.amount} VND</b></li>
+  		<li><b id="cart-amt">${cart.amount}</b>VND</li>
   		<li>
   			<a href="/cart/view">YOUR CART</a>
   		</li>
