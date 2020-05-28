@@ -1,4 +1,29 @@
 $(document).ready(function() {
+	$("tr[data-id] input").on("input",function(){
+		var id=$(this).closest("tr").attr("data-id");
+		var price=$(this).closest("tr").attr("data-price");
+		var discount=$(this).closest("tr").attr("data-discount");
+		var quantity=$(this).val();
+		$.ajax({ 
+			url:"/cart/update/"+ id + "/" + quantity,
+			type: "get",
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			success:function(response){
+				$("#cart-cnt").html(response[0]);
+				$("#cart-amt").html(response[1]);
+			},
+			async: false,
+			error:function (e) {
+//			 alert("Failed: " + e);
+			 console.log(status.responseText)
+			console.log(e)
+			},
+		});
+		var amt=quantity * price * (1 - discount);
+		$(this).closest("tr").find("td.amt").html(amt);
+	});
+	
 	$(".btn-cart-clear").click(function() {
 		 $.ajax({
 			url : "/cart/clear",
@@ -23,6 +48,7 @@ $(document).ready(function() {
 				 console.log(status.responseText)
 				//console.log(e)
 		     },
+		     
 		});
 		$(this).closest("tr").remove();
 	});

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bookshop.service.CartService;
@@ -14,7 +15,18 @@ public class ShoppingCartController {
 	CartService cart;
 	
 	@ResponseBody
-	@RequestMapping("/cart/add/{id}")
+	@RequestMapping(value = "/cart/update/{id}/{quantity}", method = RequestMethod.GET)
+	public Object[] update
+	(@PathVariable("id") Integer id,
+	 @PathVariable("quantity") Integer quantity) {
+		System.out.println(id + quantity);
+		cart.update(id,quantity);
+		Object[] info = {cart.getCount(), cart.getAmount()};
+		return info;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cart/add/{id}") 
 	public Object[] add(@PathVariable("id") Integer id) {
 		cart.add(id);
 		Object[] info = {cart.getCount(), cart.getAmount()};
