@@ -38,7 +38,6 @@ $(document).ready(function() {
 			success:function(response) {
 				$("#cart-cnt").html(response[0]);
 				$("#cart-amt").html(response[1]);
-				alert("Da them vao gio hang");
 				console.log(response);
 			},
 			error:function (e) {
@@ -49,12 +48,14 @@ $(document).ready(function() {
 	
 			
 		});
-	//	var img = $(this).closest(".thumbnail").find("a>img");
-		
+		var img = $(this).closest(".thumbnail").find("a>img");
+		var options = {to:'#cart-img',className:'cart-fly'}
+		var cart_css = '.cart-fly{background-image: url("'+img.attr("src")+'");background-repeat: no-repeat; background-size: cover;}';
+		$("style#cart-css").html(cart_css);
+			
 		//transfer from #cart-img to cart-img 
-	//	var options = {to:'#cart-img',className:'cart-fly'}
-	//	img.effect('transfer', options,1000); // 1000 ms = 1s
-	//	alert(img.attr("src"));
+		img.effect('transfer', options,1000); // 1000 ms = 1s
+	
 	
 	});
 	

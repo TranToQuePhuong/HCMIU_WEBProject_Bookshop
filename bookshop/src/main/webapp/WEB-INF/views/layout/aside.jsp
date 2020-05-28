@@ -44,10 +44,6 @@
   </div>
 </div>
 
-<style>
- .cart-fly{
- 	background-color: yellow;
- }
-</style>
+<style id="cart-css"></style>
 
 
