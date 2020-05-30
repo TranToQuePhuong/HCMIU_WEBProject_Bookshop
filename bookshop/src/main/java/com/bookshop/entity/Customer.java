@@ -1,17 +1,18 @@
 package com.bookshop.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity @Table(name="Customers")
-public class Customer {
+@Entity
+@Table(name = "Customers")
+public class Customer implements Serializable {
 	@Id
-	String id; 
+	String id;
 	String password;
 	String fullName;
 	String email;
@@ -19,7 +20,7 @@ public class Customer {
 	Boolean activated;
 	Boolean admin;
 
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy = "customer")
 	List<Order> orders;
 
 	public String getId() {
@@ -85,5 +86,5 @@ public class Customer {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	
+
 }

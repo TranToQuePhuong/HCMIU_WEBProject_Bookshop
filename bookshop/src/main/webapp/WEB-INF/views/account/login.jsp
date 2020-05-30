@@ -9,7 +9,7 @@
 	</div>
 	<div class="form-group">
 		<label>Password</label> 
-		<input name="pw" class="form-control"  value="${pw}">
+		<input name="pw" class="form-control"  value="${pwd}">
 	</div>
 	<div class="form-group">
 		<div class="form-control">
