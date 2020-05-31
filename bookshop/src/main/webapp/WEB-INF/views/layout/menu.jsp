@@ -1,4 +1,6 @@
 <%@ page pageEncoding="utf-8"%>
+<!-- Thêm taglib core để xài dc if,choose,for,while -->
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -11,15 +13,29 @@
       <li><a href="/home/faq">FAQ</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Log In</a></li>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Forgot Password?</a></li>
-          <li><a href="#">Sign Out</a></li>
-          <li><a href="#">Change Password</a></li>
-          <li><a href="#">Update</a></li>
-          <li><a href="#">Order</a></li>
-        </ul>
+        <c:choose>
+        	<c:when test="${empty sessionScope.user}">
+        		<!-- Chưa đăng nhập thì chỉ thấy 3 mục -->
+        		<ul class="dropdown-menu">
+          			<li><a href="/account/login">Log In</a></li>
+          			<li><a href="/account/register">Sign Up</a></li>
+          			<li><a href="/account/forgotPassword">Forgot Password?</a></li>
+        		</ul>
+        	</c:when>
+        	<c:otherwise>
+        		 <!-- Sau đăng nhập thì thấy 4 mục như sau -->
+        		<ul class="dropdown-menu">
+         			<li><a href="/account/logout">Sign Out</a></li>
+          			<li><a href="/account/changePassword">Change Password</a></li>
+          			<li><a href="/account/update">Update</a></li>
+          			<li><a href="#">Order</a></li>
+        		</ul>
+        	</c:otherwise>
+        	
+        </c:choose>
+       
+       
+       
       </li>
     </ul>
     

@@ -19,6 +19,7 @@ public class ShareInterceptor extends HandlerInterceptorAdapter {
 	@Autowired
 	CategoryDAOImp dao;
 
+	//Chuẩn bị dữ liệu cho giao diện thì viết trong postHandle
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {

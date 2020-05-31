@@ -85,6 +85,11 @@ public class AccountController {
 				cookie.delete("userid");
 				cookie.delete("pass");
 			}
+			//Quay lại trang đã lưu trong "back-url" (nếu có)
+			String backUrl = (String)session.getAttribute("back-url");
+			if(backUrl !=null) {
+				return "redirect:" + backUrl;
+			}
 		}
 		return "account/login";
 	}
