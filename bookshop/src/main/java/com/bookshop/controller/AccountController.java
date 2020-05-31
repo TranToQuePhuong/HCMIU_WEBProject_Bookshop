@@ -122,7 +122,7 @@ public class AccountController {
 		dao.create(user);
 		model.addAttribute("message", "Register successfully");
 
-		String from="queephuong99@gmail.com";
+		String from="bookshopPQD@gmail.com";
 		String to=user.getEmail();
 		String subject="Welcome";
 		String url= request.getRequestURL().toString().replace("register", "activate/"+user.getId());
