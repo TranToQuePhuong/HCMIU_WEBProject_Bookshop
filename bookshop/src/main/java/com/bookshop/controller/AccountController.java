@@ -62,9 +62,11 @@ public class AccountController {
 
 	//Xu li nut dang nhap
 	@PostMapping("/account/login")
-	public String login(Model model, @RequestParam("id") String id, @RequestParam("pw") String pw,
+	public String login(Model model, 
+				@RequestParam("id") String id, 
+				@RequestParam("pw") String pw,
 			// rm=remember me
-			@RequestParam(value = "rm", defaultValue = "false") boolean rm) {
+				@RequestParam(value = "rm", defaultValue = "false") boolean rm) {
 		Customer user = dao.findById(id);
 		if (user == null) {
 			model.addAttribute("message", "Invalid username!");
@@ -141,5 +143,102 @@ public class AccountController {
 		dao.update(user);
 		return "redirect:/account/login";
 	}
+	
+	//hiện cái form forgot ra
+	@GetMapping("/account/forgotPassword")
+	public String forgotPassword(Model model) {
+		return "account/forgotPassword";
+	}
+	
+	@PostMapping("/account/forgotPassword")
+	public String forgotPassword(Model model,
+			@RequestParam("id") String id, 
+			@RequestParam("email") String email) throws MessagingException {
+		//Vì truyen bean vao form ở post nên ở đây cũng phải có bean user để đẩy từ form lên
+		Customer user = dao.findById(id);
+		if(user==null) {
+			model.addAttribute("message", "Invalid username");
+		}
+		else if(!email.equals(user.getEmail())) {
+			model.addAttribute("message", "Invalid email address");
+		}
+		else {
+			String from="bookshopPQD@gmail.com";
+			String to=user.getEmail();
+			String subject="Forgot password";
+			String body="Your password is: " + user.getPassword();
+			//Sau khi click activate thi doi duong dan /account/register thành /account/activate/{userid} --> tạo url để control đường dẫn
+			MailInfo mail= new MailInfo(from, to,subject, body); 
+			mailer.send(mail);
+			
+			model.addAttribute("message", "Your password was sent. Please check inbox of your registered email !");
+		}
+		
+		return "redirect:/account/login";
+	}
 
+	
+	@GetMapping("/account/changePassword")
+	public String changePassword(Model model) {
+		return "account/changePassword";
+	}
+
+	@PostMapping("/account/changePassword")
+	public String changePassword(Model model, 
+			@RequestParam("id") String id, 
+			@RequestParam("pw") String pw,
+			@RequestParam("npw1") String npw1, 
+			@RequestParam("npw2") String npw2) throws MessagingException {
+		
+		if(!npw1.equals(npw2)) {
+			model.addAttribute("message","Confirm password is not match!");
+		}
+		else {
+			Customer user = dao.findById(id);
+				if(user==null) {
+					model.addAttribute("message", "Invalid username");
+				}
+				else if(!pw.equals(user.getPassword())) {
+					model.addAttribute("message", "Invalid Password");
+				}
+				else {
+					user.setPassword(npw1);
+					dao.update(user);
+					
+					model.addAttribute("message","Change password successfully");
+			
+				}
+	
+		}
+		return "redirect:/account/login";
+	}
+
+	@GetMapping("/account/update")
+	public String update(Model model) {
+		//Vì truyen bean vao form ở post nên ở đây cũng phải có bean user để đẩy từ form lên
+		Customer user = (Customer) session.getAttribute("user");
+		model.addAttribute("form", user);
+		return "account/update";
+	}
+
+	@PostMapping("/account/update")
+	public String update(Model model, 
+			@ModelAttribute("form") Customer user,
+			@RequestParam("photo_file") MultipartFile file) throws IllegalStateException, IOException {
+		if (!file.isEmpty()) {
+			String dir = app.getRealPath("/static/avatar");
+			//thư mục ở getRealPath với thêm tên của file gốc
+			File f = new File(dir, file.getOriginalFilename());
+			file.transferTo(f);
+			user.setPhoto(f.getName());
+		}
+		dao.update(user);
+		//Update ban đầu chỉ mới đổi đc thông tin dưới database 
+		//session vẫn chưa đổi 
+		//(load trang vẫn lưu thông tin cũ lúc chưa update dù dtb đã đổi)
+		//-->phải làm cho update đc cả trong session
+		session.setAttribute("user", user);
+		model.addAttribute("message", "Update successfully");
+		return "account/update";
+	}
 }
