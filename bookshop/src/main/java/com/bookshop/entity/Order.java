@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,13 +16,15 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity @Table(name="Orders")
+@Entity
+@Table(name = "Orders")
 public class Order {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 //	Customer customerId;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	Date orderDate;
 	String address;
 	Double amount;
@@ -29,10 +32,10 @@ public class Order {
 
 	// Foreign key
 	@ManyToOne
-	@JoinColumn(name ="customerId")
+	@JoinColumn(name = "customerId")
 	Customer customer;
-	
-	@OneToMany(mappedBy="order")
+
+	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderDetails;
 
 	public int getId() {
@@ -90,6 +93,5 @@ public class Order {
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-	
-	
+
 }

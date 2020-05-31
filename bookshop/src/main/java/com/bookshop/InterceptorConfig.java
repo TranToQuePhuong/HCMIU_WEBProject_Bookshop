@@ -12,15 +12,15 @@ import com.bookshop.interceptor.ShareInterceptor;
 public class InterceptorConfig implements WebMvcConfigurer {
 	@Autowired
 	ShareInterceptor share;
-	
+
 	@Autowired
 	AuthorizeInterceptor auth;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(share).addPathPatterns("/**");
-		
-		registry.addInterceptor(auth)
-			.addPathPatterns("/account/changePassword", "/account/logout","/account/update");
+
+		registry.addInterceptor(auth).addPathPatterns("/account/changePassword", "/account/logout", "/account/update",
+				"/order/**");
 	}
 }

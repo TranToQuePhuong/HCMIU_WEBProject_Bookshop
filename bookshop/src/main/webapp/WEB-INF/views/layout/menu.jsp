@@ -28,7 +28,7 @@
          			<li><a href="/account/logout">Sign Out</a></li>
           			<li><a href="/account/changePassword">Change Password</a></li>
           			<li><a href="/account/update">Update</a></li>
-          			<li><a href="#">Order</a></li>
+          			<li><a href="/order/list">Order</a></li>
         		</ul>
         	</c:otherwise>
         	

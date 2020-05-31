@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bookshop.entity.Order;
+import com.bookshop.entity.OrderDetail;
 
 @Transactional
 @Repository
@@ -59,6 +60,18 @@ public class OrderDAOImp implements OrderDAO {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
 		session.update(entity);
+
+	}
+
+	@Override
+	public void create(Order order, List<OrderDetail> details) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		session.save(order);
+		order.setOrderDetails(details);
+		for (OrderDetail detail : details) {
+			session.save(detail);
+		}
 
 	}
 }

@@ -37,5 +37,5 @@
 </table>
 <button class="btn btn-sm btn-danger btn-cart-clear">Clear</button>
 <button class="btn btn-sm btn-info">Continue</button>
-<button class="btn btn-sm btn-success">Checkout</button>
+<a href="/order/checkout" class="btn btn-sm btn-success">Checkout</a>
 					

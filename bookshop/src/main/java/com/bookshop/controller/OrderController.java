@@ -1,0 +1,61 @@
+package com.bookshop.controller;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.bookshop.dao.OrderDAO;
+import com.bookshop.entity.Customer;
+import com.bookshop.entity.Order;
+import com.bookshop.entity.OrderDetail;
+import com.bookshop.entity.Product;
+import com.bookshop.service.CartService;
+
+@Controller
+public class OrderController {
+	@Autowired
+	HttpSession session;
+
+	@Autowired
+	CartService cart;
+
+	@Autowired
+	OrderDAO dao;
+
+	@GetMapping("/order/checkout")
+	public String showForm(@ModelAttribute("order") Order order) {
+		Customer user = (Customer) session.getAttribute("user");
+		order.setOrderDate(new Date());
+		order.setCustomer(user);
+		order.setAmount(cart.getAmount());
+		return "order/checkout";
+	}
+
+	@PostMapping("/order/checkout")
+	public String purchase(Model model, @ModelAttribute("order") Order order) {
+		Collection<Product> list = cart.getItems();
+		List<OrderDetail> details = new ArrayList<>();
+		for (Product product : list) {
+			OrderDetail detail = new OrderDetail();
+			detail.setOrder(order);
+			detail.setProduct(product);
+			detail.setUnitPrice(product.getUnitPrice());
+			detail.setQuantity(product.getQuantity());
+			detail.setDiscount(product.getDiscount());
+			details.add(detail);
+		}
+		dao.create(order, details);
+		cart.clear();
+		return "order/checkout";
+	}
+}
