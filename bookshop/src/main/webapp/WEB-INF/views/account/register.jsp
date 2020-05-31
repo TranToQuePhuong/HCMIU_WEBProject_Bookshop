@@ -5,6 +5,7 @@
 <h4>${message}</h4>
 <form:form action="/account/register" 
 		modelAttribute="form" enctype="multipart/form-data">
+		<!-- Form có upload nên phải bỏ thêm enctype="multipart/form-data" -->
 	<div class="form-group">
 		<label>Username</label> 
 		<form:input path="id" class="form-control"/>
@@ -15,7 +16,7 @@
 	</div>
 	<div class="form-group">
 		<label>Fullname</label> 
-		<form:input path="fullname" class="form-control"/>
+		<form:input path="fullName" class="form-control"/>
 	</div>
 	<div class="form-group">
 		<label>Email</label> 
