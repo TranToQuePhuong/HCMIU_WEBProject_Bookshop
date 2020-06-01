@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bookshop.dao.OrderDAO;
+import com.bookshop.dao.OrderDetailDAO;
 import com.bookshop.entity.Customer;
 import com.bookshop.entity.Order;
 import com.bookshop.entity.OrderDetail;
@@ -31,6 +33,9 @@ public class OrderController {
 
 	@Autowired
 	OrderDAO dao;
+
+	@Autowired
+	OrderDetailDAO ddao;
 
 	@GetMapping("/order/checkout")
 	public String showForm(@ModelAttribute("order") Order order) {
@@ -56,6 +61,31 @@ public class OrderController {
 		}
 		dao.create(order, details);
 		cart.clear();
-		return "order/checkout";
+		return "redirect:/order/list";
+	}
+
+	@GetMapping("/order/list")
+	public String list(Model model) {
+		Customer user = (Customer) session.getAttribute("user");
+		List<Order> orders = dao.findByUser(user);
+		model.addAttribute("orders", orders);
+		return "order/list";
+	}
+
+	@GetMapping("/order/detail/{id}")
+	public String detail(Model model, @PathVariable("id") Integer id) {
+		Order order = dao.findById(id);
+		List<OrderDetail> details = ddao.findByOrder(order);
+		model.addAttribute("order", order);
+		model.addAttribute("details", details);
+		return "order/detail";
+	}
+
+	@GetMapping("/order/items")
+	public String items(Model model) {
+		Customer user = (Customer) session.getAttribute("user");
+		List<Product> list = dao.findItemsByUser(user);
+		model.addAttribute("list", list);
+		return "product/list";
 	}
 }

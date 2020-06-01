@@ -10,8 +10,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bookshop.entity.Customer;
 import com.bookshop.entity.Order;
 import com.bookshop.entity.OrderDetail;
+import com.bookshop.entity.Product;
 
 @Transactional
 @Repository
@@ -73,5 +75,28 @@ public class OrderDAOImp implements OrderDAO {
 			session.save(detail);
 		}
 
+	}
+
+	@Override
+	public List<Order> findByUser(Customer user) {
+		String hql = "FROM Order o WHERE o.customer.id=:uid ORDER BY o.orderDate DESC";
+		Session session = factory.getCurrentSession();
+		// contact to Order table in database
+		TypedQuery<Order> query = session.createQuery(hql, Order.class);
+		query.setParameter("uid", user.getId());
+		List<Order> list = query.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Product> findItemsByUser(Customer user) {
+		// TODO Auto-generated method stub
+		String hql = "SELECT DISTINCT d.product " + "FROM OrderDetail d " + "WHERE d.order.customer.id=:uid";
+		Session session = factory.getCurrentSession();
+		// contact to Order table in database
+		TypedQuery<Product> query = session.createQuery(hql, Product.class);
+		query.setParameter("uid", user.getId());
+		List<Product> list = query.getResultList();
+		return list;
 	}
 }

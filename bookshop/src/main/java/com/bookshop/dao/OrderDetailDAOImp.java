@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bookshop.entity.Order;
 import com.bookshop.entity.OrderDetail;
 
 @Transactional
@@ -60,5 +61,17 @@ public class OrderDetailDAOImp implements OrderDetailDAO {
 		Session session = factory.getCurrentSession();
 		session.update(entity);
 
+	}
+
+	@Override
+	public List<OrderDetail> findByOrder(Order order) {
+		// TODO Auto-generated method stub
+		String hql = "FROM OrderDetail d WHERE d.order.id=:oid";
+		Session session = factory.getCurrentSession();
+		// contact to OrderDetail table in database
+		TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
+		query.setParameter("oid", order.getId());
+		List<OrderDetail> list = query.getResultList();
+		return list;
 	}
 }
