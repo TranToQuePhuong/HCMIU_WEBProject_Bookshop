@@ -1,3 +1,7 @@
+// go back then auto reload
+if(performance.navigation.type == 2){
+   location.reload(true);
+}
 $(document).ready(function() {
 	$("tr[data-id] input").on("input",function(){
 		var id=$(this).closest("tr").attr("data-id");
