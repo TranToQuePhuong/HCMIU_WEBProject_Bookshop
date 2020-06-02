@@ -21,6 +21,10 @@ public class HibernateConfig {
 	@Autowired
 	Environment env;
 	
+	//Khi nhiều csdl thì copy ra nhiều HibernateConfig sửa lại
+	//Nhưng như v thì bị trùng kiểu
+	//Nên phải dùng id để quản lý
+	//Mà proj này chỉ có 1 csdl --> Chưa cần làm
 	@Bean
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

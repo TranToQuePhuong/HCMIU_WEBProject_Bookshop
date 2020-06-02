@@ -15,7 +15,7 @@ public class Category {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	String name;
-	String nameVN;
+//	String nameVN;
 			
 	@OneToMany(mappedBy="category")
 	List<Product> products;
@@ -36,13 +36,13 @@ public class Category {
 		this.name = name;
 	}
 
-	public String getNameVN() {
-		return nameVN;
-	}
-
-	public void setNameVN(String nameVN) {
-		this.nameVN = nameVN;
-	}
+//	public String getNameVN() {
+//		return nameVN;
+//	}
+//
+//	public void setNameVN(String nameVN) {
+//		this.nameVN = nameVN;
+//	}
 
 	public List<Product> getProducts() {
 		return products;
