@@ -9,18 +9,22 @@
 	<div class="form-group">
 		<label>Username</label> 
 		<form:input path="id" class="form-control"/>
+		<form:errors path="id"/>
 	</div>
 	<div class="form-group">
 		<label>Password</label> 
 		<form:input path="password" class="form-control"/>
+		<form:errors path="password"/>
 	</div>
 	<div class="form-group">
 		<label>Fullname</label> 
 		<form:input path="fullName" class="form-control"/>
+		<form:errors path="fullName"/>
 	</div>
 	<div class="form-group">
 		<label>Email</label> 
 		<form:input path="email" class="form-control"/>
+		<form:errors path="email"/>
 	</div>
 	<div class="form-group">
 		<label>Photo</label> 
