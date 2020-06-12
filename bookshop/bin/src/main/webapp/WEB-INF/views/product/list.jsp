@@ -10,7 +10,7 @@
         	<div class="caption" >   
      			<p class="overflow-fix">${p.name}</p>
         		<div data-id="${p.id}" class="pull-right">
-         			<button class="btn btn-sm btn-danger">
+         			<button class="btn btn-sm btn-danger btn-add-to-cart">
          				<i class="glyphicon glyphicon-shopping-cart"></i>
          			</button>
          			<button class="btn btn-sm btn-warning btn-star">

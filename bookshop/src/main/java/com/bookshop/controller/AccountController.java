@@ -69,14 +69,27 @@ public class AccountController {
 			@RequestParam(value = "rm", defaultValue = "false") boolean rm) {
 		Customer user = dao.findById(id);
 		if (user == null) {
-			model.addAttribute("message", "Invalid username!");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					"  Invalid username!\r\n" + 
+					"</div>");
 		} else if (!pw.equals(user.getPassword())) {
-			model.addAttribute("message", "Invalid Password!");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					"  Invalid Password!\r\n" + 
+					"</div>");
 		} else if (!user.getActivated()) {
-			model.addAttribute("message", "Your account is Inactivated!");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					"  Your account is Inactivated!\r\n" + 
+					"</div>");
+			
 		} else { // login thanh cong
-			model.addAttribute("message", "Login successfully!");
+			model.addAttribute("message", "<div class=\"alert alert-success\" role=\"alert\">\r\n" + 
+					"  Login successfully!\r\n" + 
+					"</div>");
 			session.setAttribute("user", user);
+			String fullname = user.getfullName();
+			String avatar = user.getPhoto();
+			session.setAttribute("fullname", fullname);
+			session.setAttribute("photo", avatar);
 			// Ghi nho tai khoan bang cookie
 			if (rm == true) {
 				cookie.create("userid", user.getId(), 30);
@@ -119,12 +132,16 @@ public class AccountController {
 
 		// Check lỗi
 		if (errors.hasErrors()) {
-			model.addAttribute("message", "Please fix some following errors");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					" Please fix some following errors!\r\n" + 
+					"</div>");
 			return "account/register";
 		} else {
 			Customer user2 = dao.findById(user.getId());
 			if (user2 != null) {
-				model.addAttribute("message", "Username has already been taken");
+				model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+						"  Username has already been taken!\r\n" + 
+						"</div>");
 				return "account/register";
 			}
 		}
@@ -143,7 +160,9 @@ public class AccountController {
 		user.setActivated(false);
 		user.setAdmin(false);
 		dao.create(user);
-		model.addAttribute("message", "Register successfully");
+		model.addAttribute("message", "<div class=\"alert alert-success\" role=\"alert\">\r\n" + 
+				"  Register successfully!\r\n" + 
+				"</div>");
 
 		String from = "bookshopPQD@gmail.com";
 		String to = user.getEmail();
@@ -178,9 +197,13 @@ public class AccountController {
 		// form lên
 		Customer user = dao.findById(id);
 		if (user == null) {
-			model.addAttribute("message", "Invalid username");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					" Invalid username!\r\n" + 
+					"</div>");
 		} else if (!email.equals(user.getEmail())) {
-			model.addAttribute("message", "Invalid email address");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					"  Invalid email address!\r\n" + 
+					"</div>");
 		} else {
 			String from = "bookshopPQD@gmail.com";
 			String to = user.getEmail();
@@ -191,7 +214,9 @@ public class AccountController {
 			MailInfo mail = new MailInfo(from, to, subject, body);
 			mailer.send(mail);
 
-			model.addAttribute("message", "Your password was sent. Please check inbox of your registered email !");
+			model.addAttribute("message", "<div class=\"alert alert-primary\" role=\"alert\">\r\n" + 
+					" Your password was sent. Please check inbox of your registered email !\r\n" + 
+					"</div>");
 		}
 
 		return "redirect:/account/login";
@@ -199,6 +224,8 @@ public class AccountController {
 
 	@GetMapping("/account/changePassword")
 	public String changePassword(Model model) {
+		Customer user = (Customer) session.getAttribute("user");
+		model.addAttribute("form", user);
 		return "account/changePassword";
 	}
 
@@ -207,23 +234,30 @@ public class AccountController {
 			@RequestParam("npw1") String npw1, @RequestParam("npw2") String npw2) throws MessagingException {
 
 		if (!npw1.equals(npw2)) {
-			model.addAttribute("message", "Confirm password is not match!");
+			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+					"Confirm password is not match!\r\n" + 
+					"</div>");
 		} else {
 			Customer user = dao.findById(id);
 			if (user == null) {
-				model.addAttribute("message", "Invalid username");
+				model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+						"Invalid username!\r\n" + 
+						"</div>");
 			} else if (!pw.equals(user.getPassword())) {
-				model.addAttribute("message", "Invalid Password");
+				model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
+						"Invalid Password!\r\n" + 
+						"</div>");
 			} else {
 				user.setPassword(npw1);
 				dao.update(user);
-
-				model.addAttribute("message", "Change password successfully");
-
+				
+				model.addAttribute("message", "<div class=\"alert alert-success\" role=\"alert\">\r\n" + 
+						"Invalid Password!\r\n" + 
+						"</div>");
 			}
 
 		}
-		return "redirect:/account/login";
+		return "redirect:/account/changePassword";
 	}
 
 	@GetMapping("/account/update")
@@ -251,7 +285,9 @@ public class AccountController {
 		// (load trang vẫn lưu thông tin cũ lúc chưa update dù dtb đã đổi)
 		// -->phải làm cho update đc cả trong session
 		session.setAttribute("user", user);
-		model.addAttribute("message", "Update successfully");
+		model.addAttribute("message", "<div class=\"alert alert-success\" role=\"alert\">\r\n" + 
+				"  Update successfully!\r\n" + 
+				"</div>");
 		return "account/update";
 	}
 }

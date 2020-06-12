@@ -1,7 +1,8 @@
+
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-
 <c:set var="cart" value="${sessionScope['scopedTarget.cartService']}"/> 
+
 <div class="panel panel-default">
   <div class="panel-heading">SHOPPING CART</div>
   <div class="panel-body">
@@ -9,19 +10,12 @@
   	<ul class="col-sm-7">
   		<li><b id="cart-cnt">${cart.count}</b> items </li>
   		<li><b id="cart-amt">${cart.amount}</b>VND</li>
-  		<li>
-  			<a href="/cart/view">YOUR CART</a>
-  		</li>
+  		<%-- 
+	  		<li>
+	  			<a href="/cart/view">YOUR CART</a>
+	  		</li>
+	  	--%>
   	</ul>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">SEARCH</div>
-  <div class="panel-body">
-  	<form action="/product/list-by-keywords" method="post">
-  		<input value="${param.keywords}"class="form-control" name="keywords" placeholder="Keywords" >
-  	</form>
   </div>
 </div>
 
@@ -45,5 +39,3 @@
 </div>
 
 <style id="cart-css"></style>
-
-

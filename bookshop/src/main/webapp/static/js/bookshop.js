@@ -3,6 +3,10 @@ if(performance.navigation.type == 2){
    location.reload(true);
 }
 $(document).ready(function() {
+	$("#menu-toggle").click(function(e) {
+		  e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+		});
 	$("tr[data-id] input").on("input",function(){
 		var id=$(this).closest("tr").attr("data-id");
 		var price=$(this).closest("tr").attr("data-price");
