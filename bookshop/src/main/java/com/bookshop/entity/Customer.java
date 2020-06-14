@@ -7,14 +7,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "Customers")
 public class Customer implements Serializable {
 	@Id
+	@NotEmpty(message = "Please fill in your username")
 	String id;
+	@Length(min = 6, message = "At least 6 characters")
 	String password;
+	@NotEmpty
 	String fullName;
+	@NotEmpty
+	@Email
 	String email;
 	String photo;
 	Boolean activated;

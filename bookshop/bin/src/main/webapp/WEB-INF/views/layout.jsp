@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Online Shopping Mall</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,6 +11,8 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link href="/static/jqueryui/jquery-ui.min.css" rel="stylesheet">
+	<script src="/static/jqueryui/jquery-ui.min.js"></script>
 	<script src="/static/js/bookshop.js"></script>
 	
 	
@@ -19,7 +21,7 @@
 
 	<div class="container">
 		<header class="row custom">
-			<h1 class="alert alert-success backGround"></h1>
+			<h1 class="alert alert-success backGround">Online Shopping Mall</h1>
 		</header>
 		<nav class="row">
 			<tiles:insertAttribute name="menu"/>
