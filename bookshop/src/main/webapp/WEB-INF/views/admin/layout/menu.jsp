@@ -7,8 +7,25 @@
       <a class="navbar-brand" href="/home/index">Home</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="/home/about">Management</a></li>
-      <li><a href="/home/contact">Report</a></li>
+    	<li class="dropdown">
+        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
+        	<ul class="dropdown-menu">
+          		<li><a href="/admin/category/index">Category</a></li>
+          		<li><a href="/admin/product/index">Product</a></li>
+          		<li><a href="/admin/customer/index">Customer</a></li>
+          		<li><a href="/admin/order/index">Order</a></li>
+        	</ul>
+      </li>
+      <li class="dropdown">
+        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Report<span class="caret"></span></a>
+        	<ul class="dropdown-menu">
+          		<li><a href="/admin/inventory/index">Inventory By Category</a></li>
+          		<li><a href="/admin/revenue/category">Revenue By Category</a></li>
+          		<li><a href="/admin/revenue/customer">Revenue By Customer</a></li>
+          		<li><a href="/admin/revenue/year">Revenue By Year</a></li>
+          		<li><a href="/admin/revenue/month">Revenue By Month</a></li>	
+        	</ul>
+      </li>
       <li><a href="/home/feedback">Account Management</a></li>
     </ul>
   </div>

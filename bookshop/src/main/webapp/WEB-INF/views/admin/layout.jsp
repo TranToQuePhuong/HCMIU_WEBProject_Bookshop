@@ -15,6 +15,8 @@
 	<script src="/static/jqueryui/jquery-ui.min.js"></script>
 	<script src="/static/js/bookshop.admin.js"></script>
 	
+	  <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
+	
 	
 </head>
 <body>

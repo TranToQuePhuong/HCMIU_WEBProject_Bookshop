@@ -77,7 +77,7 @@ public class ProductDAOImp implements ProductDAO {
 	@Override
 	public List<Product> findByKeywords(String keywords) {
 		String hql = "FROM Product p"
-				+ " WHERE p.name LIKE :kw OR p.category.name LIKE :kw OR p.category.nameVN LIKE :kw";
+				+ " WHERE p.name LIKE :kw OR p.category.name LIKE :kw";
 		Session session = factory.getCurrentSession();
 		// contact to Product table in database
 		TypedQuery<Product> query = session.createQuery(hql, Product.class);
