@@ -12,6 +12,7 @@
 			<li>Price: <f:formatNumber value="${prod.unitPrice}" pattern="###,###"/> </li>
 			<li>Product Date: <f:formatDate value="${prod.productDate}" pattern="dd-MM-yyyy"/> </li>
 			<li>Category: ${prod.category.nameVN}</li>
+			<li>Category: ${prod.category.name}</li>
 			<li>Quantity: ${prod.quantity}</li>
 			<li>Discount: <f:formatNumber value="${prod.discount}" type="percent"/></li>
 			<li>Total View: ${prod.viewCount}</li>
