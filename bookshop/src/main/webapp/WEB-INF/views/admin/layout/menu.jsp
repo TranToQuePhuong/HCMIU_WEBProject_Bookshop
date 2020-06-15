@@ -26,7 +26,6 @@
           		<li><a href="/admin/revenue/month">Revenue By Month</a></li>	
         	</ul>
       </li>
-      <li><a href="/home/feedback">Account Management</a></li>
     </ul>
   </div>
 </nav>

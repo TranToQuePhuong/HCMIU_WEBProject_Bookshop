@@ -12,6 +12,7 @@
 						</div>
 						<div class="form-group">
 							<label>Current Password:</label> 
+
 							<input name="pw" class="form-control" type="password" >
 						</div>
 						<div class="form-group">

@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 			<h1>REGISTRATION</h1>
-			<h4>${message}</h4>
+			<h2>${message}</h2>
 			<form:form action="/account/register" 
 					class = "form-container" modelAttribute="form" enctype="multipart/form-data">
 					<!-- Form có upload nên phải bỏ thêm enctype="multipart/form-data" -->
