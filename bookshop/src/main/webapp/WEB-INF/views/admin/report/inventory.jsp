@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
 
-<h2 class="alert alert-success">REVENUE BY CATEGORY</h2>
+<h2 class="alert alert-success">INVENTORY BY CATEGORY</h2>
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -27,3 +27,6 @@
 	</c:forEach>
 	</tbody>
 </table>
+<div>
+	  <jsp:include page="_inventory_chart.jsp"></jsp:include>
+  </div>

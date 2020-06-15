@@ -12,15 +12,15 @@
 						</div>
 						<div class="form-group">
 							<label>Current Password:</label> 
-							<input name="pw" class="form-control">
+							<input name="pw" type="password"class="form-control">
 						</div>
 						<div class="form-group">
 							<label>New Password:</label> 
-							<input name="npw1" class="form-control">
+							<input name="npw1" type="password" class="form-control">
 						</div>
 						<div class="form-group">
 							<label>Confirm New Password:</label> 
-							<input name="npw2" class="form-control">
+							<input name="npw2" type="password" class="form-control">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-default">Change Password</button>

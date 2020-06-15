@@ -16,7 +16,7 @@
 				</div>
 				<div class="form-group">
 					<label>Password</label> 
-					<form:input path="password" class="form-control"/>
+					<form:input path="password" type="password" class="form-control"/>
 					<form:errors path="password"/>
 				</div>
 				<div class="form-group">

@@ -18,7 +18,7 @@
 								value="${uid}">
 						</div>
 						<div class="form-group">
-							<label><span class = "glyphicon glyphicon-lock"></span> Password</label> <input name="pw" class="form-control"
+							<label><span class = "glyphicon glyphicon-lock"></span> Password</label> <input name="pw" type="password" class="form-control"
 								value="${pwd}">
 						</div>
 						<div class="form-group">

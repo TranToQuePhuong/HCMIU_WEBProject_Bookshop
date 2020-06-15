@@ -262,7 +262,7 @@ public class AccountController {
 			}
 
 		}
-		return "redirect:/account/changePassword";
+		return "account/changePassword";
 	}
 
 	@GetMapping("/account/update")
