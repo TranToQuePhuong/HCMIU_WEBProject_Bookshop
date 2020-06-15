@@ -2,7 +2,6 @@
 <div class="container" style="padding: 92px">
 		<div class="row">
 			<div class="col-md-12">
-		
 				<h2>${message}</h2>
 				<form action="/account/forgotPassword" method="post" class = "form-container">
 					

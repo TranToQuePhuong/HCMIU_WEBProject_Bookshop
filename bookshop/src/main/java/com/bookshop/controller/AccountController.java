@@ -200,10 +200,12 @@ public class AccountController {
 			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
 					" Invalid username!\r\n" + 
 					"</div>");
+			return "account/forgotPassword";
 		} else if (!email.equals(user.getEmail())) {
 			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
 					"  Invalid email address!\r\n" + 
 					"</div>");
+			return "account/forgotPassword";
 		} else {
 			String from = "bookshopPQD@gmail.com";
 			String to = user.getEmail();
@@ -237,22 +239,25 @@ public class AccountController {
 			model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
 					"Confirm password is not match!\r\n" + 
 					"</div>");
+			return "account/changePassword";
 		} else {
 			Customer user = dao.findById(id);
 			if (user == null) {
 				model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
 						"Invalid username!\r\n" + 
 						"</div>");
+				return "account/changePassword";
 			} else if (!pw.equals(user.getPassword())) {
 				model.addAttribute("message", "<div class=\"alert alert-danger\" role=\"alert\">\r\n" + 
 						"Invalid Password!\r\n" + 
 						"</div>");
+				return "account/changePassword";
 			} else {
 				user.setPassword(npw1);
 				dao.update(user);
 				
 				model.addAttribute("message", "<div class=\"alert alert-success\" role=\"alert\">\r\n" + 
-						"Invalid Password!\r\n" + 
+						"Change Password Successfully!\r\n" + 
 						"</div>");
 			}
 
