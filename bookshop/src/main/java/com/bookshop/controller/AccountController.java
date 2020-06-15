@@ -81,7 +81,12 @@ public class AccountController {
 					"  Your account is Inactivated!\r\n" + 
 					"</div>");
 			
-		} else { // login thanh cong
+		} 
+		else { // login thanh cong
+			
+			if (user.getAdmin()) {
+				return "redirect:/admin/home/index";
+			}
 			model.addAttribute("message", "<div class=\"alert alert-success\" role=\"alert\">\r\n" + 
 					"  Login successfully!\r\n" + 
 					"</div>");
