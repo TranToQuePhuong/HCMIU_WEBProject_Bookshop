@@ -3,8 +3,8 @@
 <div class="container" style="padding: 30px">
 		<div class="row">
 			<div class="col-md-12">
-			<h2>UPDATE PROFILE</h2>
-			<h4>${message}</h4>
+			<h1>UPDATE PROFILE</h1>
+			<h2>${message}</h2>
 			<form:form action="/account/update"  class = "form-container"
 					modelAttribute="form" enctype="multipart/form-data">
 					<!-- Form có upload nên phải bỏ thêm enctype="multipart/form-data" -->
@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					<label>Email</label> 
-					<form:input path="email" class="form-control"/>
+					<form:input path="email" class="form-control" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label>Photo</label> 

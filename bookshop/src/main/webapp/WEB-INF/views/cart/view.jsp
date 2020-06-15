@@ -1,6 +1,6 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<div class="container" style="padding: 30px">
+<div class="container" style="padding: 30px;padding-bottom: 120px;">
 		<div class="row">
 			<div class="col-md-12">
 			

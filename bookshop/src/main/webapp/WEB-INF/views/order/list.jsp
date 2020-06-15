@@ -3,7 +3,7 @@
 <div class="container" style="padding: 30px">
 		<div class="row">
 			<div class="col-md-12">
-			<h2>ORDER LIST</h2>
+			<h1>ORDER LIST</h1>
 			<table class = "table table-striped">
 				<thead>
 					<tr>
@@ -32,6 +32,7 @@
 				</tbody>
 			
 			</table>
+			<a href = "/home/index"><button type="button" class="btn btn-outline-dark">Continue to buy</button></a> 
 		</div>
 	</div>
 </div>

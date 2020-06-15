@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <div class = "bg">
-<div class="container" style="padding: 30px">
+<div class="container" style="padding: 30px; padding-bottom: 80px;">
 	<div class="row">
 		<div class="col-md-12">
 			<h2>${message}</h2>
@@ -19,7 +19,7 @@
 						</div>
 						<div class="form-group">
 							<label><span class = "glyphicon glyphicon-lock"></span> Password</label> <input name="pw" class="form-control"
-								value="${pwd}">
+								value="${pwd}" type="password" >
 						</div>
 						<div class="form-group">
 							<div class="form-control">
@@ -35,8 +35,8 @@
 				
 			<c:otherwise>
 					<!-- Sau đăng nhập  -->
-				<h4>Welcome , ${fullname}!</h4>
-				<a href="/home/index" class = "btn btn-default">Home</a>
+				<h1><strong>Welcome, ${fullname}!</strong></h1>
+				<a href="/home/index" class = "btn btn-default">Shop now</a>
 			</c:otherwise>
 
 			</c:choose>

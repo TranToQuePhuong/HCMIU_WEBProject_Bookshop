@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-12">
 		
-				<h4>${message}</h4>
+				<h2>${message}</h2>
 				<form action="/account/forgotPassword" method="post" class = "form-container">
 					
 					<div style="text-align:center">

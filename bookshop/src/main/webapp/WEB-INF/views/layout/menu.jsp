@@ -59,7 +59,6 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="/home/about">About</a></li>
-      <li><a href="#footer">Contact</a></li>
       <li><a href="/home/feedback">Feedback</a></li>
       <li><a href="/home/faq">FAQ</a></li>
 			<li>

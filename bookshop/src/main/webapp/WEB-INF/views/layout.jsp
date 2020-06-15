@@ -53,7 +53,7 @@
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <%--	<link rel="stylesheet" href="/static/css/bookshop.css"> --%>
-<link rel="stylesheet" href="/static/css/test4.css">
+<link rel="stylesheet" href="/static/css/test6.css">
 <link rel="stylesheet" href="/static/css/homepage2.css">
 
 
@@ -100,7 +100,7 @@
 	<!-- /Body -->
 	
 	<!-- Footer -->
-	<footer id="footer">
+	<footer id="footer" class = "footer">
 		<div class="container">
 			<div class="row" style="padding: 5px;">
 				<div class="col-md-3">
@@ -116,7 +116,7 @@
 				<div class="col-md-3">
 					<div>
 						<p class="footer-text">Co-operate</p>
-						<a href="#" class = "white-link">Selling with Bukkie</a>
+						<a href="/home/faq" class = "white-link">Selling with Bukkie</a>
 					</div>
 					<div>
 						<p class="footer-text">Supporting client</p>
@@ -124,11 +124,11 @@
 							<p>
 								<a href="#" class = "white-link">Hotline: 1900-3456</a>
 							<p>
-								<a href="#" class = "white-link">Guide for buying books</a>
+								<a href="/home/faq" class = "white-link">Guide for buying books</a>
 							<p>
-								<a href="#" class = "white-link" >Return policy</a>
+								<a href="/home/faq" class = "white-link" >Return policy</a>
 							<p>
-								<a href="#" class = "white-link">Import goods policy</a>
+								<a href="/home/faq" class = "white-link">Import goods policy</a>
 						</div>
 
 					</div>

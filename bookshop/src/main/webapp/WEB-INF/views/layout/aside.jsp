@@ -10,11 +10,10 @@
   	<ul class="col-sm-7">
   		<li><b id="cart-cnt">${cart.count}</b> items </li>
   		<li><b id="cart-amt">${cart.amount}</b>VND</li>
-  		<%-- 
-	  		<li>
-	  			<a href="/cart/view">YOUR CART</a>
-	  		</li>
-	  	--%>
+	  	<li>
+	  		<a href="/cart/view">YOUR CART</a>
+	  	</li>
+	  	
   	</ul>
   </div>
 </div>

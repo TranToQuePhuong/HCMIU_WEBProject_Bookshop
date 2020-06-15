@@ -1,10 +1,11 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="cart" value="${sessionScope['scopedTarget.cartService']}"/> 
 <div class="container" style="padding: 30px">
 		<div class="row">
 			<div class="col-md-12">
-			<h2>SHOPPING CART</h2>
+			<h1>SHOPPING CART</h1>
 			<table class = "table">
 				<thead>
 					<tr>
@@ -32,8 +33,8 @@
 			</table>
 			
 			
-			<h2>CHECKOUT</h2>
-			<h4>${message}</h4>
+			<h1>CHECKOUT</h1>
+			<h2>${message}</h2>
 			<form:form action="/order/checkout" modelAttribute="order">
 			
 				<div class="form-group">
@@ -57,7 +58,17 @@
 					<form:textarea path="description" rows ="3" class="form-control"/>
 				</div>
 				<div class="form-group">
+				<c:if test="${cart.amount == 0}">
+						<div class="alert alert-danger" role="alert">
+							There is no product in your cart!
+						</div>
+						<a href = "/home/index"><button type="button" class="btn btn-outline-dark">Continue to buy</button></a> 
+						<br><br> 
+						<button class="btn btn-default" disabled>Purchase</button>
+				</c:if>
+				<c:if test="${cart.amount > 0}">
 					<button class="btn btn-default">Purchase</button>
+				</c:if>
 				</div>
 				
 			</form:form>

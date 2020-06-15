@@ -4,7 +4,7 @@
 <div class="container" style="padding: 30px">
 		<div class="row">
 			<div class="col-md-12">
-			<h2>REGISTRATION</h2>
+			<h1>REGISTRATION</h1>
 			<h4>${message}</h4>
 			<form:form action="/account/register" 
 					class = "form-container" modelAttribute="form" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
 				</div>
 				<div class="form-group">
 					<label>Password</label> 
-					<form:input path="password" class="form-control"/>
+					<form:input path="password" class="form-control" type="password" />
 					<form:errors path="password"/>
 				</div>
 				<div class="form-group">

@@ -4,8 +4,8 @@
 <div class="container" style="padding: 30px">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>ORDER INFORMATION</h2>
-				<h4>${message}</h4>
+				<h1>ORDER INFORMATION</h1>
+				<h2>${message}</h2>
 				<form:form action="/order/checkout" modelAttribute="order">
 					<div class="form-group">
 						<label>Order ID</label> 
@@ -34,7 +34,7 @@
 					
 				</form:form>
 				
-				<h2>ORDER DETAIl</h2>
+				<h1>ORDER DETAIl</h1>
 				<table class = "table">
 					<thead>
 						<tr>

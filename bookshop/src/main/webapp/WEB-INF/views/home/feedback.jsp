@@ -3,7 +3,7 @@
 <div class="container" style="padding: 30px">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>FEEDBACK</h2>
+				<h1>FEEDBACK</h1>
 				<form>
 					<div class="form-group">
 						<label for="survey">Do you feel satisfied with our web?</label>

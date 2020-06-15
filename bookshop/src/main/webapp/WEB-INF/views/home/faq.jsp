@@ -3,7 +3,7 @@
 <div class="container" style="padding: 30px">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>FAQ</h2>
+			<h1>FAQ</h1>
 			<div class="panel-group" id="accordion">
 				<div class="panel panel-default">
 					<div class="panel-heading">
