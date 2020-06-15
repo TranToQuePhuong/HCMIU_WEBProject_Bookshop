@@ -17,11 +17,11 @@
 						</div>
 						<div class="form-group">
 							<label>New Password:</label> 
-							<input name="npw1" class="form-control" type="password" >
+							<input name="npw1" class="form-control" type="password" minlength="6" >
 						</div>
 						<div class="form-group">
 							<label>Confirm New Password:</label> 
-							<input name="npw2" class="form-control" type="password" >
+							<input name="npw2" class="form-control" type="password" minlength = "6">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-default">Change Password</button>
